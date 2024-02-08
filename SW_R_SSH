@@ -1,0 +1,22 @@
+Enable SSH on SW | Router
+
+*** Base config ***
+hostname NAME
+ip domain-name DOMAINNAME
+
+*** Auth ***
+username NAME (password|secret) PWD
+enable secret PWD
+
+*** SSH ***
+// Generate key
+crypto key generate rsa general-keys modulus <360-4096>
+// Version 2 if needed
+ip ssh version 2
+
+*** Config line ***
+line vty 0 X
+logging s
+login (local | auth)
+// Only SSH
+transport input ssh
