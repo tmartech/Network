@@ -1,0 +1,28 @@
+*** Create VLAN ***
+vlan X
+name NAME
+
+*** Config interface ***
+// Access
+int gx/x
+switchport mode access
+switchport access vlan X
+
+// Trunk
+switchport mode trunk
+
+*** Config Inter VLAN Routing on L3 SW ***
+// Create previous vlan
+// Config int in trunk
+// Enable Routing
+ip routing
+// Create SVI
+int vlan VLANNUMBER
+ip add x.x.x.x x.x.x.x
+
+*** Config Inter VLAN Routing on Router on a stick ***
+// Config int in trunk
+// Config sub int
+int g0/1.X // X = vlan number
+encapsulation dot1Q VLANNUMBER
+ip add x.x.x.x x.x.x.x
