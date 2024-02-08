@@ -1,0 +1,25 @@
+VTP use DTP.
+If DTP is disabled, VTP can not work
+
+3 modes
+Server | Transparent | Client
+
+Server = propagate vtp infos. (Conf saved in nvram)
+Transparent = get nothing, propagate nothing. (Conf saved in nvram) version number is always 0.
+Client = receive and propagate from a server. (Conf no saved in nvram)
+
+If a switch is in transparent mode with no domain or a different domain than the vtp server, no vtp propagation will pass trhough the switch.
+
+Tip : if you need to reset version number of vtp client 
+1. switch to transparent then back to client.
+2. change domain-name and revert.
+
+Command :
+
+vtp mode (SERVER|CLIENT|TRANSPARENT)
+vtp domain XXX
+vtm password XXX
+
+// Show
+show vtp status
+show vtp password
